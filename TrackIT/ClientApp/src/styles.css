@@ -1,0 +1,163 @@
+/* You can add global styles to this file, and also import other style files */
+
+/* Provide sufficient contrast against white background */
+a {
+  color: #0366d6;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+
+.main-container {
+  min-height: 80vh; 
+  overflow: hidden;
+  display: block;
+  position: relative;
+}
+
+.footerA {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  line-height: 60px;
+  position: sticky;
+}
+
+.min-widthDates { min-width:90px; }
+
+/* Minimum width */
+.widthReduceNoWrap {
+  width: 1%;
+  white-space: nowrap
+}
+
+/* Minimum width */
+.widthReduce {
+  width: 1%;
+}
+
+.max-widthSoftware {
+  max-width: 120px;
+  min-width: 120px;
+  overflow-wrap: break-word;
+}
+
+.tableOverflow { /* make the table scrollable if screen too small */
+  display: block;
+  overflow-x: auto;
+  /*text-align: center;*/
+  margin: 0 auto;
+  font-size: 85%;
+}
+
+.tdWidth {
+  min-width: 200px;
+  max-width: 200px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+
+/*Flips container then inner content back so scrollbar appears at the top*/
+.Container1 {
+}
+
+.Content1 {
+}
+
+.Flipped, .Flipped .Content1 {
+  transform: rotateX(180deg);
+  -ms-transform: rotateX(180deg); /* IE 9 */
+  -webkit-transform: rotateX(180deg); /* Safari and Chrome */
+}
+/*-----------------------------------------------------------------------*/
+
+.nav-link:hover {
+  background-color: #ededed;
+}
+.dropdown-item:hover {
+  background-color: #ededed;
+  color: black;
+}
+
+/*Need stop set image form home page command nothing form other pages - see ngAfterViewInit() input each component*/
+body {
+  background-repeat: repeat;
+  background-color: unset;
+}
+
+.home-pic {
+  border: solid;
+  border-width: thin;
+  box-shadow: 5px 10px 8px #888888;
+  width: 85%;
+  height: auto;
+}
+
+.mousePointer:hover {
+  cursor: pointer;
+}
+
+.briefcase-colour {
+  background: orange;
+  color: white;
+  padding: 7px;
+}
+
+.green-heading {
+  color: white;
+  background-color: green;
+}
+
+.black-border {
+  border: 1px solid gray;
+}
+
+.font85 {
+  font-size: 85%;
+}
+
+.shortMessage2 {
+  width: 200px;
+  text-overflow: ellipsis;
+  /*white-space: nowrap;*/
+  overflow: hidden;
+  max-height: 3em;
+}
+
+  .shortMessage2:hover, shortMessage2:focus {
+    max-width: 200px;
+    max-height: 5em;
+    /*white-space: initial;*/
+  }
+
+.shortMessage {
+  max-width: 150px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+  .shortMessage:hover, .shortMessage:focus {
+    max-width: initial;
+    text-overflow: initial;
+    white-space: initial;
+  }
+
+.widthDatesTime {
+  width: 1%;
+  white-space: nowrap
+}
+
+.highlightHover {
+  width: 250px;
+}
+
+  .highlightHover:hover {
+    cursor: pointer;
+    color: green; /*bootstrap success colour #5cb85c */
+    width: 250px;
+  }

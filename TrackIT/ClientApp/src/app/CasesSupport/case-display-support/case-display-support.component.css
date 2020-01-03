@@ -1,0 +1,8 @@
+.mouseHover:hover {
+  cursor: pointer;
+  color: blue;
+}
+
+.deadline {
+  margin-left: -15px;
+}

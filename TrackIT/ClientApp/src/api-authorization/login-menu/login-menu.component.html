@@ -1,0 +1,21 @@
+<ul class="navbar-nav" *ngIf="isAuthenticated | async">
+    <li class="nav-item dropdown">
+        <a  class="nav-link dropdown-toggle text-dark" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="manage login">
+          <i class="fa fa-user-circle text-warning"></i> {{ userName | async }}
+        </a>
+        <div class="dropdown-menu dropdown-menu-right">
+          <a class="dropdown-item" [routerLink]='["/authentication/profile"]' [state]='{ local: true }' >Manage Login</a>
+          <a class="dropdown-item" [routerLink]='["/authentication/logout"]' [state]='{ local: true }' >Logout</a>
+        </div>
+    </li>
+</ul>
+
+
+<ul class="navbar-nav" *ngIf="!(isAuthenticated | async)">
+    <li class="nav-item">
+        <a class="nav-link text-dark" [routerLink]='["/authentication/register"]'>Register</a>
+    </li>
+    <li class="nav-item">
+        <button class="btn btn-success" [routerLink]='["/authentication/login"]'>Login</button>
+    </li>
+</ul>

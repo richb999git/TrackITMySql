@@ -1,0 +1,39 @@
+<div class="alert alert-danger" role="alert" *ngIf="errors">
+
+  <p *ngIf="!errors.error">Server Error</p>
+  <p *ngIf="errors.status && errors.status == 401">Your authentication has been lost. Please log out and back in again.</p>
+  <p *ngIf="errors.status && errors.status == 404">Cannot find page.</p>
+  <p *ngIf="errors.status && errors.status > 499">Error status: {{ errors.status }}</p>
+
+  <div *ngIf="errors.error">
+
+    <p *ngIf="errors.status && errors.status == 400">{{ errors.error }}</p>
+
+    <div *ngIf="!errors.TypeDescription">
+      <p *ngIf="errors.error.title">{{ errors.error.title }}</p>
+      <p *ngIf="!objectHasProperties(errors.error)">general {{ errors.error }}</p>
+    </div>
+
+    <div *ngIf="errors.error.errors">
+      <p *ngIf="convertObjectToArray(errors.error.errors)"></p>
+      <ul *ngIf="entries">
+        <li *ngFor="let error of entries">
+          {{ error[1] }}
+        </li>
+      </ul>
+    </div>
+
+
+
+    <ul *ngIf="errors.TypeDescription">
+      <li *ngFor="let error of errors.Type">
+        {{ error }}
+      </li>
+      <li *ngFor="let error of errors.TypeDescription">
+        {{ error }}
+      </li>
+    </ul>
+
+  </div>
+
+</div>

@@ -1,0 +1,76 @@
+<h2 id="tableLabel"><i class="fa fa-briefcase briefcase-colour"></i> Case</h2>
+<br />
+<p *ngIf="!case"><em>Loading...case details</em></p>
+<app-show-errors [errors]="errorMsg"></app-show-errors>
+
+<div *ngIf="case">
+
+  <a class="" [routerLink]="['/cases-list']">Back to Case List</a>
+  <br />
+  <app-show-errors [errors]="errorMsg"></app-show-errors>
+  <br />
+  <hr />
+  <div>
+    <div class="row">
+      <div class="col">Case</div>
+      <div class="col">Status</div>
+    </div>
+    <div class="row">
+      <div class="col"><b>{{ case.id }}</b></div>
+      <div class="col"><b>{{ casesService.statusNames[case.status-1] }}</b></div>
+    </div>
+    <br />
+    <div class="row">
+      <div class="col">Software</div>
+      <div class="col">Date/Time Opened</div>
+    </div>
+    <div class="row">
+      <div class="col"><b>{{ case.software.name }}</b></div>
+      <div class="col"><b>{{ case.dateOpened | date: 'dd-MMM-yy HH:mm' }}</b></div>
+    </div>
+    <br />
+    <div class="row">
+      <div class="col">Type</div>
+      <div class="col">Created by</div>
+    </div>
+    <div class="row">
+      <div class="col"><b>{{ casesService.types[case.type-1] }}</b></div>
+      <div class="col"><b>{{ case.userInfo.firstName }} {{ case.userInfo.lastName }}</b></div>
+    </div>
+    <br />
+    <div class="row">
+      <div class="col">Urgency (per user)</div>
+      <div class="col">Contact</div>
+    </div>
+    <div class="row">
+      <div class="col"><b>{{ casesService.urgencyLevels[case.urgencyLevel-1] }}</b></div>
+      <div class="col"><b>{{ case.contactInfo.firstName }} {{ case.contactInfo.lastName }} - {{ case.contactInfo.email }}</b></div>
+    </div>
+    <br />
+    <div class="row">
+      <div class="col">Date Completed</div>
+    </div>
+    <div class="row">
+      <div class="col"><b>{{ (case.dateCompleted | date: 'dd-MMM-yyyy HH:mm') || "Not completed" }}</b></div>
+    </div>
+
+  </div>
+
+  <br />
+  <hr />
+
+  <div>Subject</div>
+  <div><b>{{ case.title }}</b></div>
+  <br />
+  <div>Description</div>
+  <div><b>{{ case.description }}</b></div>
+  <br /><br />
+
+  <br />
+  <app-view-messages [caseId]="case.id" [caseUserId]="case.userId" [isEmployee]=false (getErrors)="messageErrorHandler($event)"></app-view-messages>
+  <br />
+
+  <app-upload-files [caseId]="case.id" (getErrors)="messageErrorHandler($event)"></app-upload-files>
+
+</div>
+<br />

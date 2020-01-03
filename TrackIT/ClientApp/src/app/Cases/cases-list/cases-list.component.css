@@ -1,0 +1,47 @@
+.selectSize {
+  max-width: 220px;
+  min-width: 220px;
+  margin-bottom: 20px;
+  margin-top: -35px;
+  margin-right: 8px;
+}
+
+.highlight:hover {
+  color: blue;
+  cursor: pointer;
+}
+
+.selected {
+  color: yellow;
+}
+  .selected:hover {
+    color: blue;
+    cursor: pointer;
+  }
+
+.lineHover:hover {
+  cursor: pointer;
+}
+
+.width150 {
+  width: 150px;
+}
+
+.tdWidthList {
+  min-width: 350px;
+  max-width: 350px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+
+
+
+/* Added to avoid strange differences on header (particularly Firefox) - copied from the Inspector in Firefox - no side effects */
+.table-light tbody + tbody, .table-light td, .table-light th, .table-light thead th {
+  border: 0px
+}
+
+.table td, .table th {
+  border-bottom: 1px solid #dee2e6; /* line at bottom of table - looks neater I think */
+}

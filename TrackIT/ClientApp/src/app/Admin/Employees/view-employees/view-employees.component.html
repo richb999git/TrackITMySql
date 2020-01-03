@@ -1,0 +1,39 @@
+<h2 id="tableLabel"><i class="fa fa-users briefcase-colour"></i> Employees</h2>
+<button class="btn btn-success" [routerLink]="['/authentication/register']">Register Employee</button>
+<br />
+<br />
+<p *ngIf="!usersP"><em>Loading...</em></p>
+<app-show-errors [errors]="errorMsg"></app-show-errors>
+
+<div *ngIf="usersP">
+  <br />
+  <div class="">
+    <table class='table table-striped table-responsive' aria-labelledby="tableLabel">
+      <thead>
+        <tr>
+          <th>Employee code</th>
+          <th (click)="sortEmployees('name')" class="highlight">Name</th>
+          <th>Email</th>
+          <th>Manager?</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of usersP.users">
+          <td class="noWrap">{{ user.id }}</td><!--change to proper employee code?-->
+          <td>{{ user.firstName }} {{ user.lastName }}</td>
+          <td>{{ user.email }}</td>
+          <td *ngIf="user.isManager">Manager</td>
+          <td *ngIf="!user.isManager"></td>
+          <td><button (click)="editEmployee(user.id)" class="btn btn-outline-success">Edit</button></td>
+          <td class="noWrap"><button (click)="addEditEmployeeSkills(user.id)" class="btn btn-outline-success">View Skills</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <br />
+  <app-pagination [pageIndex]="pageIndex" [totalPages]="usersP.totalPages" [pagesBefore]="pagesBefore"
+                  [pagesAfter]="pagesAfter" (pageChanged)="pageChangedHandler($event)">
+  </app-pagination>
+</div>
