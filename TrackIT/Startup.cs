@@ -62,10 +62,18 @@ namespace TrackIT
             services.Configure<TrackITSettings>(Configuration.GetSection("TrackIT")); //added
             services.Configure<CloudinarySettings>(Configuration.GetSection("CloudinarySettings")); //added
 
+            // Added to connect to Azure mySQL in App database dynamically (or local dev database)
+            string mysql = System.Environment.GetEnvironmentVariable("MYSQLCONNSTR_localdb");
+            System.Text.StringBuilder c = new System.Text.StringBuilder(mysql)
+                            .Replace("Data Source=127.0.0.1:", "server=localhost;Port=")
+                            .Replace("User Id", "uid")
+                            .Append(";");
+            string connectionString = mysql != null ? c.ToString() : Configuration.GetConnectionString("DefaultConnection");
 
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseMySql(
-                    Configuration.GetConnectionString("DefaultConnection")));
+                    connectionString));
+                    //Configuration.GetConnectionString("DefaultConnection")));
 
             // add .AddRoles<IdentityRole>()? - not sure if it works yet - doesn't seem to but leave in
             services.AddDefaultIdentity<ApplicationUser>()
